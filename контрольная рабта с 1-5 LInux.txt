@@ -1,0 +1,362 @@
+1. Используя команду cat в терминале операционной системы Linux, создать
+два файла Домашние животные (заполнив файл собаками, кошками,
+хомяками) и Вьючные животными заполнив файл Лошадьми, верблюдами и
+ослы), а затем объединить их. Просмотреть содержимое созданного файла.
+Переименовать файл, дав ему новое имя (Друзья человека).
+radiant@radiant-VirtualBox:~$ ls -l
+итого 36
+drwx------ 3 radiant radiant 4096 Шіл 29 17:54  snap
+drwxr-xr-x 2 radiant radiant 4096 Шіл 29 17:54  Видео
+drwxr-xr-x 2 radiant radiant 4096 Шіл 29 17:54  Документы
+drwxr-xr-x 2 radiant radiant 4096 Шіл 29 17:54  Загрузки
+drwxr-xr-x 2 radiant radiant 4096 Шіл 29 17:54  Изображения
+drwxr-xr-x 2 radiant radiant 4096 Шіл 29 17:54  Музыка
+drwxr-xr-x 2 radiant radiant 4096 Шіл 29 17:54  Общедоступные
+drwxr-xr-x 2 radiant radiant 4096 Шіл 29 17:54 'Рабочий стол'
+drwxr-xr-x 2 radiant radiant 4096 Шіл 29 17:54  Шаблоны
+radiant@radiant-VirtualBox:~$ cat > "Домашние животные"
+КОшки
+Собаки
+Хомяки
+radiant@radiant-VirtualBox:~$ cat "Домашние животные"
+КОшки
+Собаки
+Хомяки
+radiant@radiant-VirtualBox:~$ cat > "Вьючные животные"
+Лошадь
+Верблюд
+Осел
+radiant@radiant-VirtualBox:~$ cat "Вьючные животные"
+Лошадь
+Верблюд
+Осел
+radiant@radiant-VirtualBox:~$ cat "Вьючные животные" "Домашние животные" > "Друзья человека"
+radiant@radiant-VirtualBox:~$ cat "Друзья человека"
+Лошадь
+Верблюд
+Осел
+КОшки
+Собаки
+Хомяки
+
+2. Создать директорию, переместить файл туда.
+radiant@radiant-VirtualBox:~$ mkdir animals
+radiant@radiant-VirtualBox:~$ mv "Друзья человека" animals/
+radiant@radiant-VirtualBox:~$ ls -l
+итого 48
+drwxrwxr-x 2 radiant radiant 4096 Шіл 29 22:47  animals
+drwx------ 3 radiant radiant 4096 Шіл 29 17:54  snap
+drwxr-xr-x 2 radiant radiant 4096 Шіл 29 17:54  Видео
+-rw-rw-r-- 1 radiant radiant   38 Шіл 29 22:42 'Вьючные животные'
+drwxr-xr-x 2 radiant radiant 4096 Шіл 29 17:54  Документы
+-rw-rw-r-- 1 radiant radiant   39 Шіл 29 22:41 'Домашние животные'
+drwxr-xr-x 2 radiant radiant 4096 Шіл 29 17:54  Загрузки
+drwxr-xr-x 2 radiant radiant 4096 Шіл 29 17:54  Изображения
+drwxr-xr-x 2 radiant radiant 4096 Шіл 29 17:54  Музыка
+drwxr-xr-x 2 radiant radiant 4096 Шіл 29 17:54  Общедоступные
+drwxr-xr-x 2 radiant radiant 4096 Шіл 29 17:54 'Рабочий стол'
+drwxr-xr-x 2 radiant radiant 4096 Шіл 29 17:54  Шаблоны
+radiant@radiant-VirtualBox:~$ cd animals
+radiant@radiant-VirtualBox:~/animals$ ls -l
+итого 4
+-rw-rw-r-- 1 radiant radiant 77 Шіл 29 22:44 'Друзья человека'
+radiant@radiant-VirtualBox:~/animals$ cd
+
+3. Подключить дополнительный репозиторий MySQL. Установить любой пакет
+из этого репозитория.
+4. Установить и удалить deb-пакет с помощью dpkg.
+
+radiant@radiant-VirtualBox:~$ wget https://dev.mysql.com/get/mysql-apt-config_0.8.17-1_all.deb
+--2023-07-29 22:53:36--  https://dev.mysql.com/get/mysql-apt-config_0.8.17-1_all.deb
+Распознаётся dev.mysql.com (dev.mysql.com)… 23.52.29.249, 2600:140f:5:a81::2e31, 2600:140f:5:aa4::2e31
+Подключение к dev.mysql.com (dev.mysql.com)|23.52.29.249|:443... соединение установлено.
+HTTP-запрос отправлен. Ожидание ответа… 302 Moved Temporarily
+Адрес: https://repo.mysql.com//mysql-apt-config_0.8.17-1_all.deb [переход]
+--2023-07-29 22:53:39--  https://repo.mysql.com//mysql-apt-config_0.8.17-1_all.deb
+Распознаётся repo.mysql.com (repo.mysql.com)… 184.50.200.228
+Подключение к repo.mysql.com (repo.mysql.com)|184.50.200.228|:443... соединение установлено.
+HTTP-запрос отправлен. Ожидание ответа… 200 OK
+Длина: 35592 (35K) [application/x-debian-package]
+Сохранение в: ‘mysql-apt-config_0.8.17-1_all.deb’
+
+mysql-apt-config_0.8.17-1_all 100%[=================================================>]  34,76K  --.-KB/s    за 0,001s
+
+2023-07-29 22:53:40 (48,2 MB/s) - ‘mysql-apt-config_0.8.17-1_all.deb’ сохранён [35592/35592]
+
+radiant@radiant-VirtualBox:~$ sudo dpkg -i mysql-apt-config_0.8.17-1_all.deb
+[sudo] пароль для radiant:
+Выбор ранее не выбранного пакета mysql-apt-config.
+(Чтение базы данных … на данный момент установлено 180765 файлов и каталогов.)
+Подготовка к распаковке mysql-apt-config_0.8.17-1_all.deb …
+Распаковывается mysql-apt-config (0.8.17-1) …
+Настраивается пакет mysql-apt-config (0.8.17-1) …
+debconf: не удалось инициализировать интерфейс: Dialog
+debconf: (Для интерфейса dialog требуется экран не менее 13 строк в высоту и 31 колонки в ширину.)
+debconf: будет использован интерфейс: Readline
+Настраивается mysql-apt-config
+------------------------------
+
+The detected system (ubuntu jammy) is not supported by MySQL. If you believe the platform is compatible with one of the
+supported systems, one of the corresponding repositories may be selected.
+
+  1. debian stretch  3. ubuntu xenial  5. ubuntu focal   7. ubuntu hirsute
+  2. debian buster   4. ubuntu bionic  6. ubuntu groovy  8. abort
+
+
+Add repository to unsupported system? 1
+
+
+MySQL APT Repo features MySQL Server along with a variety of MySQL components. You may select the appropriate product tochoose the version that you wish to receive.
+
+Once you are satisfied with the configuration then select last option 'Ok' to save the configuration, then run 'apt-get
+update' to load package list. Advanced users can always change the configurations later, depending on their own needs.
+
+  1. MySQL Server & Cluster (Currently selected: mysql-8.0)  3. MySQL Preview Packages (Currently selected: Disabled)
+[Далее]
+
+  2. MySQL Tools & Connectors (Currently selected: Enabled)  4. Ok
+
+Which MySQL product do you wish to configure?
+
+Which MySQL product do you wish to configure? 4
+
+
+Warning: apt-key should not be used in scripts (called from postinst maintainerscript of the package mysql-apt-config)
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+OK
+radiant@radiant-VirtualBox:~$ sudo apt-get update
+Пол:1 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]
+Сущ:2 http://kz.archive.ubuntu.com/ubuntu jammy InRelease
+Пол:3 http://kz.archive.ubuntu.com/ubuntu jammy-updates InRelease [119 kB]
+Пол:4 http://repo.mysql.com/apt/debian stretch InRelease [21,6 kB]
+Пол:5 http://kz.archive.ubuntu.com/ubuntu jammy-backports InRelease [108 kB]
+Ошб:4 http://repo.mysql.com/apt/debian stretch InRelease
+  Следующие подписи неверны: EXPKEYSIG 8C718D3B5072E1F5 MySQL Release Engineering <mysql-build@oss.oracle.com>
+Пол:6 http://kz.archive.ubuntu.com/ubuntu jammy-updates/main amd64 DEP-11 Metadata [99,5 kB]
+Пол:7 http://kz.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 DEP-11 Metadata [279 kB]
+Пол:8 http://kz.archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 DEP-11 Metadata [940 B]
+Пол:9 http://kz.archive.ubuntu.com/ubuntu jammy-backports/main amd64 DEP-11 Metadata [8 000 B]
+Пол:10 http://kz.archive.ubuntu.com/ubuntu jammy-backports/universe amd64 DEP-11 Metadata [15,6 kB]
+Пол:11 http://security.ubuntu.com/ubuntu jammy-security/main amd64 DEP-11 Metadata [41,5 kB]
+Пол:12 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 DEP-11 Metadata [22,0 kB]
+Чтение списков пакетов… Готово
+W: http://repo.mysql.com/apt/debian/dists/stretch/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+W: Ошибка GPG: http://repo.mysql.com/apt/debian stretch InRelease: Следующие подписи неверны: EXPKEYSIG 8C718D3B5072E1F5 MySQL Release Engineering <mysql-build@oss.oracle.com>
+E: Репозиторий «http://repo.mysql.com/apt/debian stretch InRelease» не подписан.
+N: Обновление из этого репозитория нельзя выполнить безопасным способом, поэтому по умолчанию он отключён.
+N: Информацию о создании репозитория и настройках пользователя смотрите в справочной странице apt-secure(8).
+radiant@radiant-VirtualBox:~$ sudo apt-get install mysql-server
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово
+Будут установлены следующие дополнительные пакеты:
+  libaio1 libcgi-fast-perl libcgi-pm-perl libevent-core-2.1-7 libevent-pthreads-2.1-7 libfcgi-bin libfcgi-perl
+  libfcgi0ldbl libhtml-template-perl libmecab2 libprotobuf-lite23 mecab-ipadic mecab-ipadic-utf8 mecab-utils
+  mysql-client-8.0 mysql-client-core-8.0 mysql-common mysql-server-8.0 mysql-server-core-8.0
+Предлагаемые пакеты:
+  libipc-sharedcache-perl mailx tinyca
+Следующие НОВЫЕ пакеты будут установлены:
+  libaio1 libcgi-fast-perl libcgi-pm-perl libevent-core-2.1-7 libevent-pthreads-2.1-7 libfcgi-bin libfcgi-perl
+  libfcgi0ldbl libhtml-template-perl libmecab2 libprotobuf-lite23 mecab-ipadic mecab-ipadic-utf8 mecab-utils
+  mysql-client-8.0 mysql-client-core-8.0 mysql-common mysql-server mysql-server-8.0 mysql-server-core-8.0
+Обновлено 0 пакетов, установлено 20 новых пакетов, для удаления отмечено 0 пакетов, и 248 пакетов не обновлено.
+Необходимо скачать 29,3 MB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 242 MB.
+Хотите продолжить? [Д/н] y
+Пол:1 http://kz.archive.ubuntu.com/ubuntu jammy/main amd64 mysql-common all 5.8+1.0.8 [7 212 B]
+Пол:2 http://kz.archive.ubuntu.com/ubuntu jammy-updates/main amd64 mysql-client-core-8.0 amd64 8.0.33-0ubuntu0.22.04.4 [2 802 kB]
+Пол:3 http://kz.archive.ubuntu.com/ubuntu jammy-updates/main amd64 mysql-client-8.0 amd64 8.0.33-0ubuntu0.22.04.4 [22,7 kB]
+Пол:4 http://kz.archive.ubuntu.com/ubuntu jammy/main amd64 libaio1 amd64 0.3.112-13build1 [7 176 B]
+Пол:5 http://kz.archive.ubuntu.com/ubuntu jammy/main amd64 libevent-core-2.1-7 amd64 2.1.12-stable-1build3 [93,9 kB]
+Пол:6 http://kz.archive.ubuntu.com/ubuntu jammy/main amd64 libevent-pthreads-2.1-7 amd64 2.1.12-stable-1build3 [7 642 B]Пол:7 http://kz.archive.ubuntu.com/ubuntu jammy/main amd64 libmecab2 amd64 0.996-14build9 [199 kB]
+Пол:8 http://kz.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libprotobuf-lite23 amd64 3.12.4-1ubuntu7.22.04.1 [209 kB]
+Пол:9 http://kz.archive.ubuntu.com/ubuntu jammy-updates/main amd64 mysql-server-core-8.0 amd64 8.0.33-0ubuntu0.22.04.4 [17,5 MB]
+Пол:10 http://kz.archive.ubuntu.com/ubuntu jammy-updates/main amd64 mysql-server-8.0 amd64 8.0.33-0ubuntu0.22.04.4 [1 431 kB]
+Пол:11 http://kz.archive.ubuntu.com/ubuntu jammy/main amd64 libcgi-pm-perl all 4.54-1 [188 kB]
+Пол:12 http://kz.archive.ubuntu.com/ubuntu jammy/main amd64 libfcgi0ldbl amd64 2.4.2-2build2 [28,0 kB]
+Пол:13 http://kz.archive.ubuntu.com/ubuntu jammy/main amd64 libfcgi-perl amd64 0.82+ds-1build1 [22,8 kB]
+Пол:14 http://kz.archive.ubuntu.com/ubuntu jammy/main amd64 libcgi-fast-perl all 1:2.15-1 [10,5 kB]
+Пол:15 http://kz.archive.ubuntu.com/ubuntu jammy/main amd64 libfcgi-bin amd64 2.4.2-2build2 [11,2 kB]
+Пол:16 http://kz.archive.ubuntu.com/ubuntu jammy/main amd64 libhtml-template-perl all 2.97-1.1 [59,1 kB]
+Пол:17 http://kz.archive.ubuntu.com/ubuntu jammy/main amd64 mecab-utils amd64 0.996-14build9 [4 850 B]
+Пол:18 http://kz.archive.ubuntu.com/ubuntu jammy/main amd64 mecab-ipadic all 2.7.0-20070801+main-3 [6 718 kB]
+Пол:19 http://kz.archive.ubuntu.com/ubuntu jammy/main amd64 mecab-ipadic-utf8 all 2.7.0-20070801+main-3 [4 384 B]
+Пол:20 http://kz.archive.ubuntu.com/ubuntu jammy-updates/main amd64 mysql-server all 8.0.33-0ubuntu0.22.04.4 [9 450 B]
+Получено 29,3 MB за 13с (2 251 kB/s)
+debconf: не удалось инициализировать интерфейс: Dialog
+debconf: (Для интерфейса dialog требуется экран не менее 13 строк в высоту и 31 колонки в ширину.)
+debconf: будет использован интерфейс: Readline
+Предварительная настройка пакетов …
+Выбор ранее не выбранного пакета mysql-common.
+(Чтение базы данных … на данный момент установлено 180770 файлов и каталогов.)
+Подготовка к распаковке …/0-mysql-common_5.8+1.0.8_all.deb …
+Распаковывается mysql-common (5.8+1.0.8) …
+Выбор ранее не выбранного пакета mysql-client-core-8.0.
+Подготовка к распаковке …/1-mysql-client-core-8.0_8.0.33-0ubuntu0.22.04.4_amd64.deb …
+Распаковывается mysql-client-core-8.0 (8.0.33-0ubuntu0.22.04.4) …
+Выбор ранее не выбранного пакета mysql-client-8.0.
+Подготовка к распаковке …/2-mysql-client-8.0_8.0.33-0ubuntu0.22.04.4_amd64.deb …
+Распаковывается mysql-client-8.0 (8.0.33-0ubuntu0.22.04.4) …
+Выбор ранее не выбранного пакета libaio1:amd64.
+Подготовка к распаковке …/3-libaio1_0.3.112-13build1_amd64.deb …
+Распаковывается libaio1:amd64 (0.3.112-13build1) …
+Выбор ранее не выбранного пакета libevent-core-2.1-7:amd64.
+Подготовка к распаковке …/4-libevent-core-2.1-7_2.1.12-stable-1build3_amd64.deb …
+Распаковывается libevent-core-2.1-7:amd64 (2.1.12-stable-1build3) …
+Выбор ранее не выбранного пакета libevent-pthreads-2.1-7:amd64.
+Подготовка к распаковке …/5-libevent-pthreads-2.1-7_2.1.12-stable-1build3_amd64.deb …
+Распаковывается libevent-pthreads-2.1-7:amd64 (2.1.12-stable-1build3) …
+Выбор ранее не выбранного пакета libmecab2:amd64.
+Подготовка к распаковке …/6-libmecab2_0.996-14build9_amd64.deb …
+Распаковывается libmecab2:amd64 (0.996-14build9) …
+Выбор ранее не выбранного пакета libprotobuf-lite23:amd64.
+Подготовка к распаковке …/7-libprotobuf-lite23_3.12.4-1ubuntu7.22.04.1_amd64.deb …
+Распаковывается libprotobuf-lite23:amd64 (3.12.4-1ubuntu7.22.04.1) …
+Выбор ранее не выбранного пакета mysql-server-core-8.0.
+Подготовка к распаковке …/8-mysql-server-core-8.0_8.0.33-0ubuntu0.22.04.4_amd64.deb …
+Распаковывается mysql-server-core-8.0 (8.0.33-0ubuntu0.22.04.4) …
+Настраивается пакет mysql-common (5.8+1.0.8) …
+update-alternatives: используется /etc/mysql/my.cnf.fallback для предоставления /etc/mysql/my.cnf (my.cnf) в автоматическом режиме
+Выбор ранее не выбранного пакета mysql-server-8.0.
+(Чтение базы данных … на данный момент установлено 180994 файла и каталога.)
+Подготовка к распаковке …/00-mysql-server-8.0_8.0.33-0ubuntu0.22.04.4_amd64.deb …
+debconf: не удалось инициализировать интерфейс: Dialog
+debconf: (Для интерфейса dialog требуется экран не менее 13 строк в высоту и 31 колонки в ширину.)
+debconf: будет использован интерфейс: Readline
+Распаковывается mysql-server-8.0 (8.0.33-0ubuntu0.22.04.4) …
+Выбор ранее не выбранного пакета libcgi-pm-perl.
+Подготовка к распаковке …/01-libcgi-pm-perl_4.54-1_all.deb …
+Распаковывается libcgi-pm-perl (4.54-1) …
+Выбор ранее не выбранного пакета libfcgi0ldbl:amd64.
+Подготовка к распаковке …/02-libfcgi0ldbl_2.4.2-2build2_amd64.deb …
+Распаковывается libfcgi0ldbl:amd64 (2.4.2-2build2) …
+Выбор ранее не выбранного пакета libfcgi-perl:amd64.
+Подготовка к распаковке …/03-libfcgi-perl_0.82+ds-1build1_amd64.deb …
+Распаковывается libfcgi-perl:amd64 (0.82+ds-1build1) …
+Выбор ранее не выбранного пакета libcgi-fast-perl.
+Подготовка к распаковке …/04-libcgi-fast-perl_1%3a2.15-1_all.deb …
+Распаковывается libcgi-fast-perl (1:2.15-1) …
+Выбор ранее не выбранного пакета libfcgi-bin.
+Подготовка к распаковке …/05-libfcgi-bin_2.4.2-2build2_amd64.deb …
+Распаковывается libfcgi-bin (2.4.2-2build2) …
+Выбор ранее не выбранного пакета libhtml-template-perl.
+Подготовка к распаковке …/06-libhtml-template-perl_2.97-1.1_all.deb …
+Распаковывается libhtml-template-perl (2.97-1.1) …
+Выбор ранее не выбранного пакета mecab-utils.
+Подготовка к распаковке …/07-mecab-utils_0.996-14build9_amd64.deb …
+Распаковывается mecab-utils (0.996-14build9) …
+Выбор ранее не выбранного пакета mecab-ipadic.
+Подготовка к распаковке …/08-mecab-ipadic_2.7.0-20070801+main-3_all.deb …
+Распаковывается mecab-ipadic (2.7.0-20070801+main-3) …
+Выбор ранее не выбранного пакета mecab-ipadic-utf8.
+Подготовка к распаковке …/09-mecab-ipadic-utf8_2.7.0-20070801+main-3_all.deb …
+Распаковывается mecab-ipadic-utf8 (2.7.0-20070801+main-3) …
+Выбор ранее не выбранного пакета mysql-server.
+Подготовка к распаковке …/10-mysql-server_8.0.33-0ubuntu0.22.04.4_all.deb …
+Распаковывается mysql-server (8.0.33-0ubuntu0.22.04.4) …
+Настраивается пакет libmecab2:amd64 (0.996-14build9) …
+Настраивается пакет mysql-client-core-8.0 (8.0.33-0ubuntu0.22.04.4) …
+Настраивается пакет libfcgi0ldbl:amd64 (2.4.2-2build2) …
+Настраивается пакет libcgi-pm-perl (4.54-1) …
+Настраивается пакет libfcgi-bin (2.4.2-2build2) …
+Настраивается пакет libhtml-template-perl (2.97-1.1) …
+Настраивается пакет libprotobuf-lite23:amd64 (3.12.4-1ubuntu7.22.04.1) …
+Настраивается пакет mecab-utils (0.996-14build9) …
+Настраивается пакет libevent-core-2.1-7:amd64 (2.1.12-stable-1build3) …
+Настраивается пакет mysql-client-8.0 (8.0.33-0ubuntu0.22.04.4) …
+Настраивается пакет libfcgi-perl:amd64 (0.82+ds-1build1) …
+Настраивается пакет libaio1:amd64 (0.3.112-13build1) …
+Настраивается пакет libevent-pthreads-2.1-7:amd64 (2.1.12-stable-1build3) …
+Настраивается пакет mecab-ipadic (2.7.0-20070801+main-3) …
+Compiling IPA dictionary for Mecab.  This takes long time...
+reading /usr/share/mecab/dic/ipadic/unk.def ... 40
+emitting double-array: 100% |###########################################|
+/usr/share/mecab/dic/ipadic/model.def is not found. skipped.
+reading /usr/share/mecab/dic/ipadic/Postp-col.csv ... 91
+reading /usr/share/mecab/dic/ipadic/Postp.csv ... 146
+reading /usr/share/mecab/dic/ipadic/Noun.number.csv ... 42
+reading /usr/share/mecab/dic/ipadic/Noun.adverbal.csv ... 795
+reading /usr/share/mecab/dic/ipadic/Noun.verbal.csv ... 12146
+reading /usr/share/mecab/dic/ipadic/Symbol.csv ... 208
+reading /usr/share/mecab/dic/ipadic/Verb.csv ... 130750
+reading /usr/share/mecab/dic/ipadic/Noun.place.csv ... 72999
+reading /usr/share/mecab/dic/ipadic/Noun.name.csv ... 34202
+reading /usr/share/mecab/dic/ipadic/Noun.csv ... 60477
+reading /usr/share/mecab/dic/ipadic/Noun.adjv.csv ... 3328
+reading /usr/share/mecab/dic/ipadic/Adnominal.csv ... 135
+reading /usr/share/mecab/dic/ipadic/Adj.csv ... 27210
+reading /usr/share/mecab/dic/ipadic/Interjection.csv ... 252
+reading /usr/share/mecab/dic/ipadic/Filler.csv ... 19
+reading /usr/share/mecab/dic/ipadic/Conjunction.csv ... 171
+reading /usr/share/mecab/dic/ipadic/Noun.org.csv ... 16668
+reading /usr/share/mecab/dic/ipadic/Adverb.csv ... 3032
+reading /usr/share/mecab/dic/ipadic/Noun.nai.csv ... 42
+reading /usr/share/mecab/dic/ipadic/Auxil.csv ... 199
+reading /usr/share/mecab/dic/ipadic/Suffix.csv ... 1393
+reading /usr/share/mecab/dic/ipadic/Noun.proper.csv ... 27328
+reading /usr/share/mecab/dic/ipadic/Others.csv ... 2
+reading /usr/share/mecab/dic/ipadic/Prefix.csv ... 221
+reading /usr/share/mecab/dic/ipadic/Noun.others.csv ... 151
+reading /usr/share/mecab/dic/ipadic/Noun.demonst.csv ... 120
+emitting double-array: 100% |###########################################|
+reading /usr/share/mecab/dic/ipadic/matrix.def ... 1316x1316
+emitting matrix      : 100% |###########################################|
+
+done!
+update-alternatives: используется /var/lib/mecab/dic/ipadic для предоставления /var/lib/mecab/dic/debian (mecab-dictionary) в автоматическом режиме
+Настраивается пакет libcgi-fast-perl (1:2.15-1) …
+Настраивается пакет mysql-server-core-8.0 (8.0.33-0ubuntu0.22.04.4) …
+Настраивается пакет mecab-ipadic-utf8 (2.7.0-20070801+main-3) …
+Compiling IPA dictionary for Mecab.  This takes long time...
+reading /usr/share/mecab/dic/ipadic/unk.def ... 40
+emitting double-array: 100% |###########################################|
+/usr/share/mecab/dic/ipadic/model.def is not found. skipped.
+reading /usr/share/mecab/dic/ipadic/Postp-col.csv ... 91
+reading /usr/share/mecab/dic/ipadic/Postp.csv ... 146
+reading /usr/share/mecab/dic/ipadic/Noun.number.csv ... 42
+reading /usr/share/mecab/dic/ipadic/Noun.adverbal.csv ... 795
+reading /usr/share/mecab/dic/ipadic/Noun.verbal.csv ... 12146
+reading /usr/share/mecab/dic/ipadic/Symbol.csv ... 208
+reading /usr/share/mecab/dic/ipadic/Verb.csv ... 130750
+reading /usr/share/mecab/dic/ipadic/Noun.place.csv ... 72999
+reading /usr/share/mecab/dic/ipadic/Noun.name.csv ... 34202
+reading /usr/share/mecab/dic/ipadic/Noun.csv ... 60477
+reading /usr/share/mecab/dic/ipadic/Noun.adjv.csv ... 3328
+reading /usr/share/mecab/dic/ipadic/Adnominal.csv ... 135
+reading /usr/share/mecab/dic/ipadic/Adj.csv ... 27210
+reading /usr/share/mecab/dic/ipadic/Interjection.csv ... 252
+reading /usr/share/mecab/dic/ipadic/Filler.csv ... 19
+reading /usr/share/mecab/dic/ipadic/Conjunction.csv ... 171
+reading /usr/share/mecab/dic/ipadic/Noun.org.csv ... 16668
+reading /usr/share/mecab/dic/ipadic/Adverb.csv ... 3032
+reading /usr/share/mecab/dic/ipadic/Noun.nai.csv ... 42
+reading /usr/share/mecab/dic/ipadic/Auxil.csv ... 199
+reading /usr/share/mecab/dic/ipadic/Suffix.csv ... 1393
+reading /usr/share/mecab/dic/ipadic/Noun.proper.csv ... 27328
+reading /usr/share/mecab/dic/ipadic/Others.csv ... 2
+reading /usr/share/mecab/dic/ipadic/Prefix.csv ... 221
+reading /usr/share/mecab/dic/ipadic/Noun.others.csv ... 151
+reading /usr/share/mecab/dic/ipadic/Noun.demonst.csv ... 120
+emitting double-array: 100% |###########################################|
+reading /usr/share/mecab/dic/ipadic/matrix.def ... 1316x1316
+emitting matrix      : 100% |###########################################|
+
+done!
+update-alternatives: используется /var/lib/mecab/dic/ipadic-utf8 для предоставления /var/lib/mecab/dic/debian (mecab-dictionary) в автоматическом режиме
+Настраивается пакет mysql-server-8.0 (8.0.33-0ubuntu0.22.04.4) …
+debconf: не удалось инициализировать интерфейс: Dialog
+debconf: (Для интерфейса dialog требуется экран не менее 13 строк в высоту и 31 колонки в ширину.)
+debconf: будет использован интерфейс: Readline
+update-alternatives: используется /etc/mysql/mysql.cnf для предоставления /etc/mysql/my.cnf (my.cnf) в автоматическом режиме
+Renaming removed key_buffer and myisam-recover options (if present)
+mysqld will log errors to /var/log/mysql/error.log
+mysqld is running as pid 3714
+Created symlink /etc/systemd/system/multi-user.target.wants/mysql.service → /lib/systemd/system/mysql.service.
+Настраивается пакет mysql-server (8.0.33-0ubuntu0.22.04.4) …
+Обрабатываются триггеры для man-db (2.10.2-1) …
+Обрабатываются триггеры для libc-bin (2.35-0ubuntu3.1) …
+
+radiant@radiant-VirtualBox:~$ sudo dpkg -r mysql-server
+(Чтение базы данных … на данный момент установлен 181161 файл и каталог.)
+Удаляется mysql-server (8.0.33-0ubuntu0.22.04.4) …
+radiant@radiant-VirtualBox:~$
