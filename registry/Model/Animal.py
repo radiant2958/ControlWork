@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 
 
 class Animal(ABC):
@@ -28,3 +28,6 @@ class Animal(ABC):
 
     def __str__(self):
         return f"Animal '{self.get_name()}', birthdate {self.get_birthday()}, know commands: {', '.join(self.get_commands())}"
+    
+    def __repr__(self):
+        return self.__str__()

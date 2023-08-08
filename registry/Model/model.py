@@ -3,7 +3,7 @@ from .Animal import Animal
 from Exeptions import IDNotFoundException, FileLoadException, FileSaveException
 from .Counter import Counter
 from datetime import datetime
-my_animal = {}
+
 def add_new_animal(my_animal,type_animal, name, birthday, commands):
     match(type_animal):
         case "dog":
@@ -36,8 +36,9 @@ def load_animals(file_name):
                 match(parts[1]):
                             case "Dogs":
                                 birthday = datetime.strptime(parts[3], '%d-%m-%Y')
-                                animal = Dogs.Dogs(parts[2], birthday, parts[4].split(", "))
+                                animal = Dogs.Dogs(str(parts[2]), birthday,parts[4].split(", ") )
                                 my_animals[animal.get_id_animal()] = animal
+                                print(f"Animal with ID {animal.get_id_animal()} added. Current my_animals: {my_animals}")
                             case "Cats":
                                 birthday = datetime.strptime(parts[3], '%d-%m-%Y')
                                 animal = Cats.Cats(parts[2], birthday, parts[4].split(", "))
@@ -59,7 +60,7 @@ def load_animals(file_name):
                                 animal = Camels.Camels(parts[2], birthday, parts[4].split(", "))
                                 my_animals[animal.get_id_animal()] = animal
                 counter.add(1)
-
+           
             return my_animals, counter
     except FileLoadException.FileLoadException:
         raise FileLoadException.FileLoadException(file_name)

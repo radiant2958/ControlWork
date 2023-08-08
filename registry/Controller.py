@@ -6,19 +6,18 @@ from Exeptions import AddingAnAnimalException
 def start():
 
     counter = Counter.Counter()
-    my_animal = {}
+    my_animal ={}
     while True:
-        View.display_menu()
+        View.display_menu()  
+        handler(int(View.get_choice()), counter,my_animal)
+           
 
-        if handler(int(View.get_choice()), counter,my_animal):
-            break
-
-def handler(n: int, counter: Counter.Counter, my_animal):
+def handler(n: int, counter: Counter.Counter,my_animal):
     match n:
         case 0:
             my_animal, counter=model.load_animals(View.open_registry())
             View.print_counter(counter)
-
+            
         case 1:
             try:
                 model.add_new_animal(my_animal, *View.get_animal_details())
@@ -51,3 +50,6 @@ def handler(n: int, counter: Counter.Counter, my_animal):
             model.save_animals(View.exit_registry(), my_animal)
             View.print_exit()
             exit()
+         
+
+    return False

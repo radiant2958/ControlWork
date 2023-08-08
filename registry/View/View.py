@@ -62,7 +62,8 @@ def input_id():
         raise InvalidInputException.InvalidInputException("Id должен состоять только из цифр.")
 
 
-
+def notify_registry_not_opened():
+    print("Реестр не открыт. Пожалуйста, сначала откройте реестр.")
 
 def lesson_command():
     print("Животное знает новую комманду")
