@@ -24,7 +24,7 @@ def add_new_animal(my_animal,type_animal, name, birthday, commands):
         case "camel":
             animal = Camels.Camels(name, birthday, commands)
             my_animal[animal.get_id_animal()] = animal
-
+    return my_animal
 
 def load_animals(file_name):
     my_animals = {}
@@ -35,31 +35,43 @@ def load_animals(file_name):
                 parts = line.strip().split(',')
                 match(parts[1]):
                             case "Dogs":
-                                birthday = datetime.strptime(parts[3], '%d-%m-%Y')
-                                animal = Dogs.Dogs(str(parts[2]), birthday,parts[4].split(", ") )
+                                birthday = parts[3]
+                                commands = parts[4:]
+                                datetime.strptime(birthday, '%d-%m-%Y')
+                                animal = Dogs.Dogs(parts[2], birthday, commands )
                                 my_animals[animal.get_id_animal()] = animal
                             case "Cats":
-                                birthday = datetime.strptime(parts[3], '%d-%m-%Y')
-                                animal = Cats.Cats(parts[2], birthday, parts[4].split(", "))
+                                birthday = parts[3]
+                                commands = parts[4:]
+                                datetime.strptime(birthday, '%d-%m-%Y')
+                                animal = Cats.Cats(parts[2], birthday, commands)
                                 my_animals[animal.get_id_animal()] = animal
                             case "Hamsters":
-                                birthday = datetime.strptime(parts[3], '%d-%m-%Y')
-                                animal = Hamsters.Hamsters(parts[2], birthday, parts[4].split(", "))
+                                birthday = parts[3]
+                                commands = parts[4:]
+                                datetime.strptime(birthday, '%d-%m-%Y')
+                                animal = Hamsters.Hamsters(parts[2], birthday, commands)
                                 my_animals[animal.get_id_animal()] = animal
                             case "Horses":
-                                birthday = datetime.strptime(parts[3], '%d-%m-%Y')
-                                animal =  Horses.Horses(parts[2], birthday, parts[4].split(", "))
+                                birthday = parts[3]
+                                commands = parts[4:]
+                                datetime.strptime(birthday, '%d-%m-%Y')
+                                animal =  Horses.Horses(parts[2], birthday, commands)
                                 my_animals[animal.get_id_animal()] = animal
                             case "Donkeys":
-                                birthday = datetime.strptime(parts[3], '%d-%m-%Y')
-                                animal = Donkeys.Donkeys(parts[2], birthday, parts[4].split(", "))
+                                birthday = parts[3]
+                                commands = parts[4:]
+                                datetime.strptime(birthday, '%d-%m-%Y')
+                                animal = Donkeys.Donkeys(parts[2], birthday, commands)
                                 my_animals[animal.get_id_animal()] = animal
                             case "Camels":
-                                birthday = datetime.strptime(parts[3], '%d-%m-%Y')
-                                animal = Camels.Camels(parts[2], birthday, parts[4].split(", "))
+                                birthday = parts[3]
+                                commands = parts[4:]
+                                datetime.strptime(birthday, '%d-%m-%Y')
+                                animal = Camels.Camels(parts[2], birthday, commands)
                                 my_animals[animal.get_id_animal()] = animal
                 counter.add(1)
-           
+            
             return my_animals, counter
     except FileLoadException.FileLoadException:
         raise FileLoadException.FileLoadException(file_name)
@@ -96,6 +108,7 @@ def delete_animal(my_animal, id):
     if id not in my_animal.keys():
         raise IDNotFoundException.IDNotFoundException(id)
     my_animal.pop(id)
+    return my_animal
 
 
 def new_commands(my_animal, id, new_command):
@@ -106,6 +119,8 @@ def new_commands(my_animal, id, new_command):
             animal.add_command(new_command)
     except IDNotFoundException.IDNotFoundException:
         raise IDNotFoundException.IDNotFoundException(id)
+    
+    return my_animal
 
 def identify_animal(my_animal, id):
     id = int(id)
