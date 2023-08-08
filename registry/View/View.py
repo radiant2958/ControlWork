@@ -1,7 +1,7 @@
 from Exeptions import InvalidInputException
 from datetime import datetime
 def display_menu():
-    print("\n0. Для начала работы в реестре откройте его ")
+    print("\n0. Посмотреть сколько животных в реестре")
     print("1. Добавить животное")
     print("2. Индентифицировать животное по id ")
     print("3. Научить животное новой команде")
@@ -17,7 +17,7 @@ def get_choice():
     return n
 
 def open_registry():
-    file_name = input("Введите имя файла:  ")
+    file_name = input("Добро пожаловать в программу! Для начала работы нужно введите имя файла:  ")
     return file_name
 
 def exit_registry():

@@ -7,17 +7,19 @@ def start():
 
     counter = Counter.Counter()
     my_animal = {}
+    View.open_registry()
+    my_animal, counter=model.load_animals(View.open_registry())
     while True:
+       
         View.display_menu()  
         handler(int(View.get_choice()), counter,my_animal)
            
 
 def handler(n: int, counter: Counter.Counter,my_animal):
+    
     match n:
         case 0:
-            my_animal, counter=model.load_animals(View.open_registry())
             View.print_counter(counter)
-            
         case 1:
             try:
                 model.add_new_animal(my_animal, *View.get_animal_details())
