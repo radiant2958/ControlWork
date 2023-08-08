@@ -6,7 +6,7 @@ from Exeptions import AddingAnAnimalException
 def start():
 
     counter = Counter.Counter()
-    my_animal ={}
+    my_animal = {}
     while True:
         View.display_menu()  
         handler(int(View.get_choice()), counter,my_animal)
